@@ -3,7 +3,7 @@
 CLASS_NAME="GreatestCommonDivisorLeastCommonMultiple"
 
 PACKAGE_NAME="com/verzano/javaproblems"
-COMMON_IN="src/"${PACKAGE_NAME}"/common/*.java"
+COMMON_IN="src/"${PACKAGE_NAME}"/common/*.java src/"${PACKAGE_NAME}"/common/runstatistics/*.java"
 
 SOURCE_IN="src/"${PACKAGE_NAME}"/"${CLASS_NAME}".java"
 SOURCE_OUT="out/src"
