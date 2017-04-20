@@ -1,4 +1,4 @@
-package com.verzano.javaproblems.common;
+package com.verzano.javaproblems.common.runstatistics;
 
 public class RunStatisticsBuilder {
   private long runNumber = -1;

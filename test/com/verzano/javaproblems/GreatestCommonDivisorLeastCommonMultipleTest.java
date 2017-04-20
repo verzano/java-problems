@@ -1,8 +1,9 @@
 package com.verzano.javaproblems;
 
 import com.verzano.javaproblems.common.Pair;
-import com.verzano.javaproblems.common.RunStatistics;
-import com.verzano.javaproblems.common.RunStatisticsBuilder;
+import com.verzano.javaproblems.common.runstatistics.RunStatistics;
+import com.verzano.javaproblems.common.runstatistics.RunStatisticsBuilder;
+import com.verzano.javaproblems.common.runstatistics.RunStatisticsSummary;
 import java.security.SecureRandom;
 import java.util.LinkedList;
 import java.util.List;
@@ -96,7 +97,7 @@ public class GreatestCommonDivisorLeastCommonMultipleTest {
       executor.awaitTermination(1L, TimeUnit.MINUTES);
     } catch (InterruptedException ignored) {}
 
-    RunStatistics.printRunStatisticsList(runStatisticsList);
+    new RunStatisticsSummary(runStatisticsList).prettyPrint();
   }
 
   public static void main(String[] args) {
