@@ -8,7 +8,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class GreatestCommonDivisorLeastCommonMultipleTest {
-  private static final int NUM_RUNS = 1000;
+  private static final int NUM_RUNS = 50;
   private static final int MAX_FACTORS = 10;
   private static final long[] LOW_PRIMES = {2L, 3L, 5L, 7L, 11L, 13L, 17L, 19L};
   private static final SecureRandom RNG = new SecureRandom();
