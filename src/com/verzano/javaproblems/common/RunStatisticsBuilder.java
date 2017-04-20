@@ -5,11 +5,12 @@ public class RunStatisticsBuilder {
   private long startTimerNanos = 0;
   private long endTimerNanos = 0;
   private boolean pass = false;
+  private String message = "";
 
   public RunStatisticsBuilder() {}
 
   public RunStatistics build() {
-    return new RunStatistics(runNumber, endTimerNanos - startTimerNanos, pass);
+    return new RunStatistics(runNumber, endTimerNanos - startTimerNanos, pass, message);
   }
 
   public RunStatisticsBuilder run(long runNumber) {
@@ -29,6 +30,11 @@ public class RunStatisticsBuilder {
 
   public RunStatisticsBuilder pass(boolean pass) {
     this.pass = pass;
+    return this;
+  }
+
+  public RunStatisticsBuilder message(String message) {
+    this.message = message;
     return this;
   }
 }
