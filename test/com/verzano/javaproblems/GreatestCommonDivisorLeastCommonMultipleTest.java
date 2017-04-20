@@ -1,6 +1,8 @@
 package com.verzano.javaproblems;
 
 import com.verzano.javaproblems.helper.Pair;
+import com.verzano.javaproblems.helper.RunStatistics;
+import com.verzano.javaproblems.helper.RunStatisticsBuilder;
 import java.security.SecureRandom;
 import java.util.LinkedList;
 import java.util.List;
@@ -12,13 +14,8 @@ public class GreatestCommonDivisorLeastCommonMultipleTest {
   private static final SecureRandom RNG = new SecureRandom();
 
   public static void test(GreatestCommonDivisorLeastCommonMultiple gcdLcm) {
-    boolean allMatch = true;
-    long slowestRun = Long.MIN_VALUE;
-    long fastestRun = Long.MAX_VALUE;
-    long averageAcu = 0L;
-    int passes = 0;
-    int failures = 0;
-
+    List<RunStatistics> runStatisticsList = new LinkedList<>();
+    RunStatisticsBuilder builder = new RunStatisticsBuilder();
 
     for (int run = 0; run < NUM_RUNS; run++) {
       int nPrimes = RNG.nextInt(MAX_FACTORS) + 1;
@@ -62,18 +59,14 @@ public class GreatestCommonDivisorLeastCommonMultipleTest {
       }
       Pair<Long, Long> correctGcdLcmPair = new Pair<>(gcd, lcm);
 
-      final long startNanos = System.nanoTime();
+      builder.run(run).startTimer();
       Pair<Long, Long> calculatedGcdLcmPair = gcdLcm.calculate(a, b);
-      final long elapsedNanos = System.nanoTime() - startNanos;
+      builder.stopTimer().pass(correctGcdLcmPair.equals(calculatedGcdLcmPair));
 
-      slowestRun = Math.max(slowestRun, elapsedNanos);
-      fastestRun = Math.min(fastestRun, elapsedNanos);
-      averageAcu += elapsedNanos;
+      RunStatistics runStatistics = builder.build();
+      runStatisticsList.add(runStatistics);
 
-      boolean match = correctGcdLcmPair.equals(calculatedGcdLcmPair);
-      allMatch &= match;
-      if (!match) {
-        failures++;
+      if (!runStatistics.pass) {
         System.out.println("FAILED -- "
             + "Values: {"
             + "a: " + a + ", "
@@ -87,17 +80,10 @@ public class GreatestCommonDivisorLeastCommonMultipleTest {
             + "gcd: " + calculatedGcdLcmPair.first + ", "
             + "lcm: " + calculatedGcdLcmPair.second
             + "}");
-      } else {
-        passes++;
       }
     }
 
-    System.out.println((allMatch ? "SUCCESS" : "FAILURE")
-        + " passes: " + passes
-        + " failures: " + failures
-        + " slowestRun: " + slowestRun + " nanos"
-        + " fastestRun: " + fastestRun + " nanos"
-        + " averageRun: " + averageAcu/NUM_RUNS + " nanos");
+    RunStatistics.printRunStatisticsList(runStatisticsList);
   }
 
   public static void main(String[] args) {
