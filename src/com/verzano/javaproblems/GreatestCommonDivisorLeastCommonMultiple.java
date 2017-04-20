@@ -1,6 +1,6 @@
 package com.verzano.javaproblems;
 
-import com.verzano.javaproblems.helper.Pair;
+import com.verzano.javaproblems.common.Pair;
 
 /**
  * The goal of this problem is to implement a method that will return a {@link Pair} containing the

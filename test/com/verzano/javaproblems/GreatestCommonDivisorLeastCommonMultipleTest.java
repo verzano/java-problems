@@ -1,8 +1,8 @@
 package com.verzano.javaproblems;
 
-import com.verzano.javaproblems.helper.Pair;
-import com.verzano.javaproblems.helper.RunStatistics;
-import com.verzano.javaproblems.helper.RunStatisticsBuilder;
+import com.verzano.javaproblems.common.Pair;
+import com.verzano.javaproblems.common.RunStatistics;
+import com.verzano.javaproblems.common.RunStatisticsBuilder;
 import java.security.SecureRandom;
 import java.util.LinkedList;
 import java.util.List;

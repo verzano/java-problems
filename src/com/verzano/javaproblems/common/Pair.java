@@ -1,4 +1,4 @@
-package com.verzano.javaproblems.helper;
+package com.verzano.javaproblems.common;
 
 public final class Pair<T1, T2> {
   public final T1 first;

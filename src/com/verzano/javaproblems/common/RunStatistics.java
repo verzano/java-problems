@@ -1,4 +1,4 @@
-package com.verzano.javaproblems.helper;
+package com.verzano.javaproblems.common;
 
 import java.util.List;
 
