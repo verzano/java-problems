@@ -1,4 +1,4 @@
-package com.verzano.javaproblems;
+package com.verzano.javaproblems.problem;
 
 import com.verzano.javaproblems.common.Pair;
 
