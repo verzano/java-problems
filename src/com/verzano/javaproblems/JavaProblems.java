@@ -10,11 +10,14 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
+// TODO add a timeout feature
+// TODO make the threads/num runs/timeout configurable
 public abstract class JavaProblems {
-  private static final int THREAD_COUNT = 10;
+  private static final int THREAD_COUNT = 12;
   private static final ExecutorService problemRunExecutor = Executors.newFixedThreadPool(THREAD_COUNT);
 
-  private static final int NUM_RUNS = 100;
+  private static final int NUM_RUNS = 500;
+
 
   public static void main(String[] args) {
     JavaProblemRunner problem = JavaProblemRunner.Factory.get(args);

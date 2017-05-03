@@ -60,8 +60,7 @@ public class GreatestCommonDivisorLeastCommonMultipleRunner extends JavaProblemR
 
         builder.run(runNumber).startTimer();
         Pair<Long, Long> calculatedGcdLcmPair = gcdLcm.calculate(a, b);
-        boolean pass = correctGcdLcmPair.equals(calculatedGcdLcmPair);
-        builder.stopTimer().pass(pass);
+        builder.stopTimer().pass(correctGcdLcmPair.equals(calculatedGcdLcmPair));
         builder.message("{"
             + "'args': {"
             + "'a': " + a + ","

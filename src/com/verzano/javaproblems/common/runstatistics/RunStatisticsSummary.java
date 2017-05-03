@@ -28,7 +28,6 @@ public class RunStatisticsSummary {
   }
 
   public void prettyPrint() {
-
     System.out.println("╔" + repeatChar(INNER_WIDTH, "═") + "╗");
     System.out.println("║" + padString(problemName, INNER_WIDTH) + "║");
     System.out.println("╠" + repeatChar(COLUMN_WIDTH, "═") + "╦"
