@@ -30,6 +30,6 @@ public abstract class JavaProblems {
       problemRunExecutor.awaitTermination(1L, TimeUnit.MINUTES);
     } catch (InterruptedException ignored) {}
 
-    new RunStatisticsSummary(runStatisticsList).prettyPrint();
+    new RunStatisticsSummary(args[0], runStatisticsList).prettyPrint();
   }
 }

@@ -14,7 +14,6 @@ public abstract class JavaProblemRunner {
       }
 
       switch (args[0].toUpperCase()) {
-        case "GCDLCM":
         case "GREATESTCOMMONDIVISORLEASTCOMMONMULTIPLE":
           return new GreatestCommonDivisorLeastCommonMultipleRunner();
         default:
