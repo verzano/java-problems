@@ -6,18 +6,15 @@ public abstract class JavaProblemRunner {
   public abstract RunStatistics grade(int runNumber);
 
   public static class Factory {
+    private static final String RUNNER_PACKAGE = "com.verzano.javaproblems.runner.problem.";
+
     private Factory() { }
 
-    public static JavaProblemRunner get(String[] args) {
-      if (args.length < 1) {
-        throw new IllegalArgumentException("No problem name supplied");
-      }
-
-      switch (args[0].toUpperCase()) {
-        case "GREATESTCOMMONDIVISORLEASTCOMMONMULTIPLE":
-          return new GreatestCommonDivisorLeastCommonMultipleRunner();
-        default:
-          throw new IllegalArgumentException(args[0] + " is not a valid problem name");
+    public static JavaProblemRunner get(String problemName) {
+      try {
+        return (JavaProblemRunner) Class.forName(RUNNER_PACKAGE + problemName + "Runner").newInstance();
+      } catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
+        throw new IllegalArgumentException("Failed to create problem " + problemName, e);
       }
     }
   }

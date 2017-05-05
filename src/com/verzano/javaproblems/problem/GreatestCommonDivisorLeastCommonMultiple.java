@@ -5,7 +5,7 @@ import com.verzano.javaproblems.common.Pair;
 /**
  * The goal of this problem is to implement a method that will return a {@link Pair} containing the
  * Greatest Common Divisor (GCD) and Least Common Multiple (LCM) (in that order) for any two given
- * {@code long}s a and b.
+ * {@code Long}s a and b.
  *
  * The GCD for any two numbers is defined as the largest possible integer that divides both of those
  * two numbers without a remainder.  For instance the GCD of 8 and 12 is 4, whereas the GCD of 11
@@ -20,7 +20,7 @@ import com.verzano.javaproblems.common.Pair;
  * time.
  */
 public class GreatestCommonDivisorLeastCommonMultiple {
-  public Pair<Long, Long> calculate(long a, long b) {
+  public Pair<Long, Long> calculate(Long a, Long b) {
     return new Pair<>(-1L, -1L);
   }
 }

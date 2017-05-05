@@ -1,9 +1,10 @@
-package com.verzano.javaproblems.runner;
+package com.verzano.javaproblems.runner.problem;
 
-import com.verzano.javaproblems.problem.GreatestCommonDivisorLeastCommonMultiple;
 import com.verzano.javaproblems.common.Pair;
 import com.verzano.javaproblems.common.runstatistics.RunStatistics;
 import com.verzano.javaproblems.common.runstatistics.RunStatisticsBuilder;
+import com.verzano.javaproblems.problem.GreatestCommonDivisorLeastCommonMultiple;
+import com.verzano.javaproblems.runner.JavaProblemRunner;
 import java.security.SecureRandom;
 import java.util.LinkedList;
 import java.util.List;
@@ -60,22 +61,22 @@ public class GreatestCommonDivisorLeastCommonMultipleRunner extends JavaProblemR
 
         builder.run(runNumber).startTimer();
         Pair<Long, Long> calculatedGcdLcmPair = gcdLcm.calculate(a, b);
-        builder.stopTimer().pass(correctGcdLcmPair.equals(calculatedGcdLcmPair));
-        builder.message("{"
-            + "'args': {"
-            + "'a': " + a + ","
-            + "'b': " + b
-            + "},"
-            + "'correct' {"
-            + "gcd: " + gcd + ","
-            + "lcm: " + lcm
-            + "},"
-            + "'calculated' {"
-            + "'gcd': " + calculatedGcdLcmPair.first + ","
-            + "'lcm': " + calculatedGcdLcmPair.second
-            + "}"
-            + "}");
-
-        return builder.build();
+        return builder.stopTimer()
+            .pass(correctGcdLcmPair.equals(calculatedGcdLcmPair))
+            .message("{"
+                + "'args': {"
+                + "'a': " + a + ","
+                + "'b': " + b
+                + "},"
+                + "'correct' {"
+                + "'gcd': " + gcd + ","
+                + "'lcm': " + lcm
+                + "},"
+                + "'calculated' {"
+                + "'gcd': " + calculatedGcdLcmPair.first + ","
+                + "'lcm': " + calculatedGcdLcmPair.second
+                + "}"
+                + "}")
+            .build();
     }
 }

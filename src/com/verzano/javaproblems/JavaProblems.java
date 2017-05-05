@@ -10,20 +10,26 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
-// TODO add a timeout feature
-// TODO make the threads/num runs/timeout configurable
+// TODO make the problems capable of generating, or reading data
+// TODO add a thread timeout feature
+// TODO use opts in javaproblems.sh for options
 public abstract class JavaProblems {
-  private static final int THREAD_COUNT = 12;
-  private static final ExecutorService problemRunExecutor = Executors.newFixedThreadPool(THREAD_COUNT);
-
-  private static final int NUM_RUNS = 500;
-
+  private static final int DEFAULT_NUM_RUNS = 500;
+  private static final int DEFAULT_NUM_THREADS = 12;
 
   public static void main(String[] args) {
-    JavaProblemRunner problem = JavaProblemRunner.Factory.get(args);
+    if (args.length == 0) {
+      throw new IllegalArgumentException("No problem name provided");
+    }
+    JavaProblemRunner problem = JavaProblemRunner.Factory.get(args[0]);
 
     List<RunStatistics> runStatisticsList = new CopyOnWriteArrayList<>();
-    for (AtomicInteger runNumber = new AtomicInteger(0); runNumber.get() < NUM_RUNS;) {
+
+    int numThreads = args.length > 2 ? Integer.valueOf(args[2]) : DEFAULT_NUM_THREADS;
+    ExecutorService problemRunExecutor = Executors.newFixedThreadPool(numThreads);
+
+    int numRuns = args.length > 1 ? Integer.valueOf(args[1]) : DEFAULT_NUM_RUNS;
+    for (AtomicInteger runNumber = new AtomicInteger(0); runNumber.get() < numRuns;) {
       final int run = runNumber.getAndIncrement();
       problemRunExecutor.execute(() -> runStatisticsList.add(problem.grade(run)));
     }
