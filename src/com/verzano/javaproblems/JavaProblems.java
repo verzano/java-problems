@@ -13,9 +13,10 @@ import java.util.concurrent.atomic.AtomicInteger;
 // TODO make the problems capable of generating, or reading data
 // TODO add a thread timeout feature
 // TODO use opts in javaproblems.sh for options
+// TODO add more statistical data to the RunStatistics
 public abstract class JavaProblems {
   private static final int DEFAULT_NUM_RUNS = 500;
-  private static final int DEFAULT_NUM_THREADS = 12;
+  private static final int DEFAULT_NUM_THREADS = 8;
 
   public static void main(String[] args) {
     if (args.length == 0) {
