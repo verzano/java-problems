@@ -29,7 +29,7 @@ public class SquareRootLongRunner extends JavaProblemRunner {
       a = sqrt*sqrt;
     }
 
-    builder.startTimer();
+    builder.run(runNumber).startTimer();
     long calculatedSqrt = sqrtl.calculate(a);
     return builder.stopTimer()
         .pass(sqrt == calculatedSqrt)
