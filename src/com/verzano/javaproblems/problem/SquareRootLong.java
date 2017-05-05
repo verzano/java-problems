@@ -9,9 +9,14 @@ package com.verzano.javaproblems.problem;
  * be returned, otherwise -1 should be returned.
  *
  * Only positive values will be provided as the value of a.
+ *
+ * A correct solution to this problem should be done without using the standard Java {@link Math}
+ * library, any standard Java library that would be capable of calculating either of the values, or
+ * any other third party library.  A good solution to this problem should run in better than O(n)
+ * time.
  */
 public class SquareRootLong {
   public long calculate(long a) {
-    return -1;
+    return -2;
   }
 }
