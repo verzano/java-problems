@@ -9,25 +9,16 @@ public class RunStatisticsSummary {
   private static final int TOTAL_WIDTH = COLUMN_WIDTH * N_COLS + N_COLS + 1;
   private static final int INNER_WIDTH = TOTAL_WIDTH - 2;
 
-  private final String problemName;
-  private final long totalRuns;
-  private final long passedRuns;
-  private final long failedRuns;
-  private final long slowestTime;
-  private final long fastestTime;
-  private final double averageTime;
+  private RunStatisticsSummary() { }
 
-  public RunStatisticsSummary(String problemName, List<RunStatistics> runStatisticsList) {
-    this.problemName = problemName;
-    totalRuns = runStatisticsList.size();
-    passedRuns = runStatisticsList.stream().filter(rs -> rs.pass).count();
-    failedRuns = totalRuns - passedRuns;
-    slowestTime = runStatisticsList.stream().mapToLong(rs111 -> rs111.elapsedTime).max().orElse(-1L);
-    fastestTime = runStatisticsList.stream().mapToLong(rs1 -> rs1.elapsedTime).min().orElse(-1L);
-    averageTime = runStatisticsList.stream().mapToLong(rs11 -> rs11.elapsedTime).average().orElse(-1D);
-  }
+  public static void prettyPrint(String problemName, List<RunStatistics> runStatisticsList) {
+    long totalRuns = runStatisticsList.size();
+    long passedRuns = runStatisticsList.stream().filter(rs -> rs.pass).count();
+    long failedRuns = totalRuns - passedRuns;
+    long slowestTime = runStatisticsList.stream().mapToLong(rs111 -> rs111.elapsedTime).max().orElse(-1L);
+    long fastestTime = runStatisticsList.stream().mapToLong(rs1 -> rs1.elapsedTime).min().orElse(-1L);
+    double averageTime = runStatisticsList.stream().mapToLong(rs11 -> rs11.elapsedTime).average().orElse(-1D);
 
-  public void prettyPrint() {
     System.out.println("╔" + repeatChar(INNER_WIDTH, "═") + "╗");
     System.out.println("║" + padString(problemName, INNER_WIDTH) + "║");
     System.out.println("╠" + repeatChar(COLUMN_WIDTH, "═") + "╦"
