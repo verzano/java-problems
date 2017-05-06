@@ -30,9 +30,9 @@ public class RunStatisticsSummary {
     System.out.println("║" + padString("totalRuns", COLUMN_WIDTH)
         + "║" + padString("passedRuns", COLUMN_WIDTH)
         + "║" + padString("failedRuns", COLUMN_WIDTH)
-        + "║" + padString("slowestTime", COLUMN_WIDTH)
-        + "║" + padString("fastestTime", COLUMN_WIDTH)
-        + "║" + padString("averageTime", COLUMN_WIDTH) + "║");
+        + "║" + padString("slowestTime (nanos)", COLUMN_WIDTH)
+        + "║" + padString("fastestTime (nanos)", COLUMN_WIDTH)
+        + "║" + padString("averageTime (nanos)", COLUMN_WIDTH) + "║");
     System.out.println("╠" + repeatChar(COLUMN_WIDTH, "═") + "╬"
         + repeatChar(COLUMN_WIDTH, "═") + "╬"
         + repeatChar(COLUMN_WIDTH, "═") + "╬"

@@ -32,7 +32,8 @@ package com.verzano.javaproblems.problem;
  *
  * For this problem you should import no 3rd party libraries or any java libraries that would
  * perform this steganographic method on data.  It should be fairly trivial to perform the bitwise
- * operations on the data provided.
+ * operations on the data provided.  For the encoding portion the provided medium will be capable of
+ * holding exactly the amount of bits in the given message.
  */
 public class LeastSignificantBitSteganography {
   public byte[] encode(byte[] medium, byte[] message) {
